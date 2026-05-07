@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music SmartAI Vietnam - Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #5d8aff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
+        .container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .logo-circle {
+            background-color: #004494;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -75%);
+            z-index: 1;
+        }
+
+        .logo-text {
+            position: relative;
+            z-index: 2;
+            font-size: 100px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+        .char-m { color: #4bd5e7; text-shadow: 2px 2px 0px #333; }
+        .char-music { 
+            color: #c1ff00; 
+            font-size: 45px; 
+            background-color: #004494;
+            padding: 0 5px;
+            margin: 0 -5px;
+        }
+        .char-n { color: #4bd5e7; text-shadow: 2px 2px 0px #333; }
+
+        .btn-group {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .btn {
+            width: 280px;
+            padding: 18px;
+            font-size: 32px;
+            font-weight: bold;
+            border: 2px solid #000;
+            border-radius: 60px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-login {
+            background: linear-gradient(to bottom, #ff7baf, #ff6ad5);
+            color: #ff0000;
+        }
+
+        .btn-settings {
+            background: linear-gradient(to right, #4cd964, #bd7aff);
+            color: #ff79c6;
+            font-size: 28px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .footer-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            text-align: left;
+            color: white;
+            font-size: 14px;
+            line-height: 1.6;
+            z-index: 2;
+        }
+
+        .footer-info a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-circle"></div>
+        
+        <div class="logo-text">
+            <span class="char-m">M</span>
+            <span class="char-music">music</span>
+            <span class="char-n">N</span>
+        </div>
+
+        <div class="btn-group">
+            <a href="login.html" class="btn btn-login" id="btnLogin">ĐĂNG NHẬP</a>
+            <a href="settings.html" class="btn btn-settings" id="btnSettings">CÀI ĐẶT</a>
+        </div>
+
+        <div class="footer-info" id="footerText">
+            HỖ TRỢ: <a href="https://music.smartai.supports.com">https://music.smartai.supports.com</a><br>
+            <strong>BƯỚC: Gửi thư hỗ trợ</strong><br>
+            Music SmartAI Vietnam = <em>MVN hoặc MSV.</em>
+        </div>
+    </div>
+
+    <script>
+        // Hàm tự động kiểm tra ngôn ngữ
+        function autoTranslate() {
+            // Lấy ngôn ngữ của trình duyệt (ví dụ: "en-US", "vi-VN")
+            const userLang = navigator.language || navigator.userLanguage;
+
+            // Nếu ngôn ngữ không phải là Tiếng Việt (vi)
+            if (!userLang.startsWith('vi')) {
+                // Đổi nội dung nút Login
+                document.getElementById('btnLogin').innerText = "LOGIN";
+                
+                // Đổi nội dung nút Settings
+                document.getElementById('btnSettings').innerText = "SETTINGS";
+
+                // Đổi nội dung phần Footer
+                document.getElementById('footerText').innerHTML = `
+                    SUPORTS: <a href="https://music.smartai.supports.com" style="color:white;">https://music.smartai.supports.com</a><br>
+                    <strong>STEP: Send a Letter of Support</strong><br>
+                    Music SmartAI Vietnam = <em>MVN or MSV.</em>
+                `;
+            }
+        }
+
+        // Chạy hàm ngay khi trang web vừa tải xong
+        window.onload = autoTranslate;
+    </script>
+
+</body>
+</html>
